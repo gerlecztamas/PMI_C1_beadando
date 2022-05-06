@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<goods>
+    <good>
+        <name>Coca cola 0,5l</name>
+        <price>250</price>
+        <id>123456789</id>
+        <category>soft drinks</category>
+    </good>
+</goods>
