@@ -32,10 +32,10 @@ public class Main {
                 choice = sc.nextInt();
                 sc.nextLine();
                 if (choice < 0 || choice > 4) {
-                    System.out.println("Please enter a number between 0 and 4!");
+                    System.err.println("Please enter a number between 0 and 4!");
                 }
             } catch (InputMismatchException ex) {
-                System.out.println("Please enter a number between 0 and 4!");
+                System.err.println("Please enter a number between 0 and 4!");
                 sc.nextLine();
             }
 
@@ -111,7 +111,7 @@ public class Main {
                 break;
             }
             catch(InputMismatchException ex){
-                System.out.println("Please enter a number!");
+                System.err.println("Please enter a number!");
                 sc.nextLine();
             }
         }
@@ -136,15 +136,15 @@ public class Main {
                 break;
             }
             catch(InputMismatchException ex){
-                System.out.println("Please enter a number!");
+                System.err.println("Please enter a number!");
                 sc.nextLine();
             }
             catch(WrongLength ex){
-                System.out.println("The id has to consist of 9 digits!");
+                System.err.println("The id has to consist of 9 digits!");
                 sc.nextLine();
             }
             catch(idAlreadyTaken ex){
-                System.out.println("The id is already taken!");
+                System.err.println("The id is already taken!");
                 sc.nextLine();
             }
         }
@@ -164,7 +164,7 @@ public class Main {
                 break;
             }
             catch(nameAlreadyTaken ex){
-                System.out.println("Name is already taken! Please choose a different one!");
+                System.err.println("Name is already taken! Please choose a different one!");
             }
         }
         return name;
