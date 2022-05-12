@@ -20,11 +20,11 @@ public class Methods {
         String name = inputName(goods);
         int price = inputPrice();
         int id = inputId(goods);
-        System.out.println("Enter category of new product: ");
-        String category = sc.nextLine();
+        String category = inputCategory();
         goods.add(new Good(name,price,id,category));
         System.out.println("Product is successfully registered!");
     }
+
 
 
 
@@ -50,8 +50,7 @@ public class Methods {
                             goods.set(goods.indexOf(good), new Good(good.getName(), good.getPrice(), id, good.getCategory()) );
                             System.out.println("Product is successfully modified!");}
                         case 4 -> {
-                            System.out.println("Enter category of product: ");
-                            String category = sc.nextLine();;
+                            String category = inputCategory();
                             goods.set(goods.indexOf(good), new Good(good.getName(), good.getPrice(), good.getId(), category) );
                             System.out.println("Product is successfully modified!");}
                     }
@@ -141,7 +140,7 @@ public class Methods {
                 break;
             }
             catch(InputMismatchException ex){
-                System.err.println("Please enter a number!");
+                System.err.println("The id has to consist of 9 digits!");
                 sc.nextLine();
             }
             catch(WrongLength ex){
@@ -161,6 +160,9 @@ public class Methods {
             try{
                 System.out.println("Enter name of product: ");
                 name=sc.nextLine();
+                if(name.isEmpty()){
+                    throw new IsEmpty();
+                }
                 for(Good good : goods){
                     if(good.getName().equals(name)){
                         throw new AlreadyTaken();
@@ -171,8 +173,29 @@ public class Methods {
             catch(AlreadyTaken ex){
                 System.err.println("Name is already taken! Please choose a different one!");
             }
+            catch(IsEmpty ex){
+                System.err.println("You didn't enter a name!");
+            }
         }
         return name;
+    }
+
+    private static String inputCategory(){
+        String category = "";
+        while(true){
+            try {
+                System.out.println("Enter category of product!");
+                category = sc.nextLine();
+                if (category.isEmpty()) {
+                    throw new IsEmpty();
+                }
+                break;
+            }
+            catch (IsEmpty e) {
+                System.err.println("You didn't enter category!");
+            }
+        }
+        return category;
     }
 
 
