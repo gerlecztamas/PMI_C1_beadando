@@ -27,7 +27,7 @@ public class Main {
                 case 4 -> Methods.deleteProduct(goods);
                 case 5 -> Methods.dataOfProduct(goods);
             }
-            System.out.println("1 - List products\r\n2 - Add new product\r\n3 - Modify a product\r\n4 - Delete a product\r\n5 - Get data of a certain product\r\n");
+            System.out.println("\r\n1 - List products\r\n2 - Add new product\r\n3 - Modify a product\r\n4 - Delete a product\r\n5 - Get data of a certain product\r\n");
             System.out.println("0 - Exit");
             try {
                 choice = sc.nextInt();

@@ -7,10 +7,12 @@ import java.util.Scanner;
 public class Methods {
 
     public static Scanner sc = new Scanner(System.in);
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_GREEN = "\u001B[32m";
 
     protected static void listProducts(ArrayList<Good> goods){
         for(Good good : goods){
-            System.out.println(good.getName()+"-"+good.getPrice()+"-"+good.getId()+"-"+good.getCategory());
+            System.out.println(good.getName()+"-"+good.getPrice()+" Ft -"+good.getId()+"-"+good.getCategory());
         }
     }
 
@@ -22,14 +24,14 @@ public class Methods {
         int id = inputId(goods);
         String category = inputCategory();
         goods.add(new Good(name,price,id,category));
-        System.out.println("Product is successfully registered!");
+        System.out.println(ANSI_GREEN+"Product is successfully registered!"+ANSI_RESET);
     }
 
 
 
 
     protected static void modifyProduct(ArrayList<Good> goods){
-        System.out.println("Enter name of product you'd like to modify");
+        System.out.println("Enter name of product you'd like to modify!");
         String name = sc.nextLine();
         for(Good good : goods){
             if(good.getName().equals(name)){
@@ -40,21 +42,21 @@ public class Methods {
                         case 1 ->{
                             name = inputName(goods);
                             goods.set(goods.indexOf(good), new Good(name, good.getPrice(), good.getId(), good.getCategory()));
-                            System.out.println("Product is successfully modified!");}
+                            System.out.println(ANSI_GREEN+"Product is successfully modified!"+ANSI_RESET);}
                         case 2 -> {
                             int price = inputPrice();
                             goods.set(goods.indexOf(good), new Good(good.getName(),price,good.getId(), good.getCategory()) );
-                            System.out.println("Product is successfully modified!");}
+                            System.out.println(ANSI_GREEN+"Product is successfully modified!"+ANSI_RESET);}
                         case 3 -> {
                             int id = inputId(goods);
                             goods.set(goods.indexOf(good), new Good(good.getName(), good.getPrice(), id, good.getCategory()) );
-                            System.out.println("Product is successfully modified!");}
+                            System.out.println(ANSI_GREEN+"Product is successfully modified!"+ANSI_RESET);}
                         case 4 -> {
                             String category = inputCategory();
                             goods.set(goods.indexOf(good), new Good(good.getName(), good.getPrice(), good.getId(), category) );
-                            System.out.println("Product is successfully modified!");}
+                            System.out.println(ANSI_GREEN+"Product is successfully modified!"+ANSI_RESET);}
                     }
-                    System.out.println("What would you like to modify?\r\n1 - Name\r\n2 - Price\r\n3 - Id\r\n4 - Category\r\n");
+                    System.out.println("\nWhat would you like to modify?\r\n1 - Name\r\n2 - Price\r\n3 - Id\r\n4 - Category\r\n");
                     System.out.println("0 - Cancel");
 
                     try {
@@ -78,16 +80,16 @@ public class Methods {
 
 
     protected static void deleteProduct(ArrayList<Good> goods){
-        System.out.print("Enter name of product to delete! ");
+        System.out.println("Enter name of product to delete!");
         String name = sc.nextLine();
         for (Good good : goods) {
             if (good.getName().equals(name)) {
                 goods.remove(good);
-                System.out.println("Product is successfully deleted.");
+                System.out.println(ANSI_GREEN+"Product is successfully deleted!"+ANSI_RESET);
                 return;
             }
         }
-        System.err.println("There is no product with this name.");
+        System.err.println("There is no product with this name!");
     }
 
 
@@ -96,11 +98,11 @@ public class Methods {
         String name=sc.nextLine();
         for (Good good : goods) {
             if (good.getName().equals(name)) {
-                System.out.println("Name: "+good.getName()+"\r\nPrice: "+good.getPrice()+"\r\nId: "+good.getId()+"\r\nCategory: "+good.getCategory());
+                System.out.println("Name: "+good.getName()+"\r\nPrice: "+good.getPrice()+" Ft\r\nId: "+good.getId()+"\r\nCategory: "+good.getCategory());
                 return;
             }
         }
-        System.err.println("There is no product with this name.");
+        System.err.println("There is no product with this name!");
     }
 
 
@@ -109,7 +111,7 @@ public class Methods {
         int price=0;
         while(true){
             try{
-                System.out.println("Enter price of new product: ");
+                System.out.println("Enter price of new product!");
                 price = sc.nextInt();
                 sc.nextLine();
                 break;
@@ -125,8 +127,9 @@ public class Methods {
         int id=0;
         while(true){
             try{
-                System.out.println("Enter id of new product: ");
+                System.out.println("Enter id of new product!");
                 id = sc.nextInt();
+                sc.nextLine();
                 int length = String.valueOf(id).length();
                 if(length!=9){
                     throw new WrongLength();
@@ -136,7 +139,7 @@ public class Methods {
                         throw new AlreadyTaken();
                     }
                 }
-                sc.nextLine();
+
                 break;
             }
             catch(InputMismatchException ex){
@@ -158,7 +161,7 @@ public class Methods {
         String name="";
         while(true){
             try{
-                System.out.println("Enter name of product: ");
+                System.out.println("Enter name of product!");
                 name=sc.nextLine();
                 if(name.isEmpty()){
                     throw new IsEmpty();
@@ -192,7 +195,7 @@ public class Methods {
                 break;
             }
             catch (IsEmpty e) {
-                System.err.println("You didn't enter category!");
+                System.err.println("You didn't enter a category!");
             }
         }
         return category;
