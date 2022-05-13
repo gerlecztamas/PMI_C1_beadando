@@ -12,7 +12,7 @@ public class Methods {
 
     protected static void listProducts(ArrayList<Good> goods){
         for(Good good : goods){
-            System.out.println(good.getName()+"-"+good.getPrice()+" Ft-"+good.getId()+"-"+good.getCategory());
+            System.out.println("\r\nId: "+good.getId()+"\r\nProduct name: "+good.getName()+"\r\nCategory: "+good.getCategory()+"\r\nPrice: "+good.getPrice()+" Ft\r\n");
         }
     }
 
@@ -199,6 +199,22 @@ public class Methods {
             }
         }
         return category;
+    }
+
+    protected static void addToCart(ArrayList<Good> goods, ArrayList<Good> cart){
+
+    }
+
+    protected static void removeFromCart(ArrayList<Good> cart){
+
+    }
+
+    protected static void listCart(ArrayList<Good> cart){
+
+    }
+
+    protected static void pay(ArrayList<Good> cart){
+
     }
 
 
