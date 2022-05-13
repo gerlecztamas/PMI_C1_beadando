@@ -9,6 +9,7 @@ public class Methods {
     public static Scanner sc = new Scanner(System.in);
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
 
     protected static void listProducts(ArrayList<Good> goods){
         for(Good good : goods){
@@ -111,7 +112,7 @@ public class Methods {
         int price=0;
         while(true){
             try{
-                System.out.println("Enter price of new product!");
+                System.out.println("Enter price of product!");
                 price = sc.nextInt();
                 sc.nextLine();
                 break;
@@ -127,7 +128,7 @@ public class Methods {
         int id=0;
         while(true){
             try{
-                System.out.println("Enter id of new product!");
+                System.out.println("Enter id of product!");
                 id = sc.nextInt();
                 sc.nextLine();
                 int length = String.valueOf(id).length();
@@ -217,12 +218,16 @@ public class Methods {
     }
 
     protected static void removeFromCart(ArrayList<Good> cart){
+        if(cart.isEmpty()){
+            System.out.println("Your cart is empty!");
+            return;
+        }
         System.out.println("Enter name of product you'd like to add to your cart!");
         String name = sc.nextLine();
         for(Good good : cart){
             if(good.getName().equals(name)){
                 cart.remove(good);
-                System.out.println(ANSI_GREEN+"Product is successfully added to your cart!!"+ANSI_RESET);
+                System.out.println(ANSI_GREEN+"Product is successfully added to your cart!"+ANSI_RESET);
                 return;
             }
         }
@@ -231,7 +236,7 @@ public class Methods {
 
     protected static void listCart(ArrayList<Good> cart){
         for(Good good : cart){
-            System.out.println(good.getName()+"-"+good.getPrice()+"-"+good.getId()+"-"+good.getCategory());
+            System.out.println(good.getName()+" "+good.getPrice()+" Ft");
         }
         if(cart.isEmpty()){
             System.out.println("Your cart is empty!");
@@ -239,6 +244,10 @@ public class Methods {
     }
 
     protected static void pay(ArrayList<Good> cart){
+        if(cart.isEmpty()){
+            System.err.println("Your cart is empty!");
+            return;
+        }
         int sum=0;
         for(Good good : cart){
             sum+=good.getPrice();
@@ -246,7 +255,7 @@ public class Methods {
         System.out.println("To pay: "+sum+" Ft");
         while(true){
             try {
-                System.out.println("To finish payment type 'done' !");
+                System.out.println(ANSI_YELLOW+"To finish payment type 'done' !"+ANSI_RESET);
                 String done = sc.nextLine();
 
 
@@ -254,11 +263,10 @@ public class Methods {
                     throw new Exception();
                 }
                 cart.clear();
-                System.out.println(ANSI_GREEN+"Payment is successfully done!!"+ANSI_RESET);
+                System.out.println(ANSI_GREEN+"Payment is successfully done!"+ANSI_RESET);
                 break;
             }
             catch(Exception ex){
-                System.err.println("You have to type 'done' to finish payment!");
             }
 
         }

@@ -34,7 +34,7 @@ public class Main {
 
     }
     public static void customermenu(ArrayList<Good> goods){
-        ArrayList<Good> cart = new ArrayList<Good>();
+        ArrayList<Good> cart = new ArrayList<>();
         int choice = -1;
         while (choice != 0) {
             switch (choice) {
@@ -67,7 +67,7 @@ public class Main {
             System.err.println("Wrong username!");
             return;
         }
-        System.out.println("Enter password");
+        System.out.println("Enter password!");
         String password = sc.nextLine();
         if(password.isEmpty() || !password.equals("6vasNzQ3569z")){
             System.err.println("Wrong password!");

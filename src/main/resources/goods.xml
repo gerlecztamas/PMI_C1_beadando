@@ -1,9 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <goods>
     <good>
-        <name>Coca cola 0,5l</name>
+        <name>Pepsi cola 0,5l</name>
         <price>250</price>
         <id>123456789</id>
+        <category>soft drinks</category>
+    </good>
+    <good>
+        <name>Popcorn NAGY</name>
+        <price>700</price>
+        <id>783579039</id>
+        <category>snacks</category>
+    </good>
+    <good>
+        <name>Popcorn KICSI</name>
+        <price>450</price>
+        <id>491997395</id>
+        <category>snacks</category>
+    </good>
+    <good>
+        <name>Nachos NAGY</name>
+        <price>800</price>
+        <id>447572792</id>
+        <category>snacks</category>
+    </good>
+    <good>
+        <name>Nachos KICSI</name>
+        <price>500</price>
+        <id>608461836</id>
+        <category>snacks</category>
+    </good>
+    <good>
+        <name>7UP</name>
+        <price>250</price>
+        <id>372528206</id>
+        <category>soft drinks</category>
+    </good>
+    <good>
+        <name>Lipton lemon</name>
+        <price>230</price>
+        <id>682983575</id>
+        <category>soft drinks</category>
+    </good>
+    <good>
+        <name>Lipton green</name>
+        <price>230</price>
+        <id>901442014</id>
         <category>soft drinks</category>
     </good>
 </goods>
