@@ -110,12 +110,13 @@ public class Methods {
 
     private static int inputPrice(){
         int price=0;
-        while(true){
+        boolean bool = true;
+        while(bool){
             try{
                 System.out.println("Enter price of product!");
                 price = sc.nextInt();
                 sc.nextLine();
-                break;
+                bool = false;
             }
             catch(InputMismatchException ex){
                 System.err.println("Please enter a number!");
@@ -126,7 +127,8 @@ public class Methods {
     }
     private static int inputId(ArrayList<Good> goods){
         int id=0;
-        while(true){
+        boolean bool = true;
+        while(bool){
             try{
                 System.out.println("Enter id of product!");
                 id = sc.nextInt();
@@ -141,7 +143,7 @@ public class Methods {
                     }
                 }
 
-                break;
+                bool = false;
             }
             catch(InputMismatchException ex){
                 System.err.println("The id has to consist of 9 digits!");
@@ -160,7 +162,8 @@ public class Methods {
     }
     private static String inputName(ArrayList<Good> goods){
         String name="";
-        while(true){
+        boolean bool = true;
+        while(bool){
             try{
                 System.out.println("Enter name of product!");
                 name=sc.nextLine();
@@ -172,7 +175,7 @@ public class Methods {
                         throw new AlreadyTaken();
                     }
                 }
-                break;
+                bool = false;
             }
             catch(AlreadyTaken ex){
                 System.err.println("Name is already taken! Please choose a different one!");
@@ -186,14 +189,15 @@ public class Methods {
 
     private static String inputCategory(){
         String category = "";
-        while(true){
+        boolean bool = true;
+        while(bool){
             try {
                 System.out.println("Enter category of product!");
                 category = sc.nextLine();
                 if (category.isEmpty()) {
                     throw new IsEmpty();
                 }
-                break;
+                bool = false;
             }
             catch (IsEmpty e) {
                 System.err.println("You didn't enter a category!");
@@ -253,22 +257,27 @@ public class Methods {
             sum+=good.getPrice();
         }
         System.out.println("To pay: "+sum+" Ft");
-        while(true){
-            try {
-                System.out.println(ANSI_YELLOW+"To finish payment type 'done' !"+ANSI_RESET);
-                String done = sc.nextLine();
-
-
-                if(!done.equals("done")){
-                    throw new Exception();
+        int choice = -1;
+        while(choice!=0){
+            switch(choice){
+                case 1 -> {
+                    cart.clear();
+                    System.out.println(ANSI_GREEN+"Payment is successfully done!"+ANSI_RESET);
+                    return;
                 }
-                cart.clear();
-                System.out.println(ANSI_GREEN+"Payment is successfully done!"+ANSI_RESET);
-                break;
             }
-            catch(Exception ex){
+            System.out.println("\r\n1 - Confirm payment\r\n");
+            System.out.println("0 - Cancel");
+            try {
+                choice = sc.nextInt();
+                sc.nextLine();
+                if (choice < 0 || choice > 1) {
+                    System.err.println("Please enter a number between 0 and 1!");
+                }
+            } catch (InputMismatchException ex) {
+                System.err.println("Please enter a number between 0 and 1!");
+                sc.nextLine();
             }
-
         }
     }
 
