@@ -12,7 +12,7 @@ public class Methods {
 
     protected static void listProducts(ArrayList<Good> goods){
         for(Good good : goods){
-            System.out.println(good.getName()+"-"+good.getPrice()+" Ft -"+good.getId()+"-"+good.getCategory());
+            System.out.println(good.getName()+"-"+good.getPrice()+" Ft-"+good.getId()+"-"+good.getCategory());
         }
     }
 
