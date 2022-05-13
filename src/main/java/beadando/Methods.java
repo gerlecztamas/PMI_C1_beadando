@@ -256,7 +256,7 @@ public class Methods {
         for(Good good : cart){
             sum+=good.getPrice();
         }
-        System.out.println("To pay: "+sum+" Ft");
+        System.out.println("Total amount: "+sum+" Ft");
         int choice = -1;
         while(choice!=0){
             switch(choice){

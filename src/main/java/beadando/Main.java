@@ -61,15 +61,17 @@ public class Main {
     }
 
     public static void adminmenu(ArrayList<Good> goods){
+        final String username = "admin";
+        final String password = "6vasNzQ3569z";
         System.out.println("Enter username!");
         String uname = sc.nextLine();
-        if(uname.isEmpty() || !uname.equals("dearadmin")){
+        if(uname.isEmpty() || !uname.equals(username)){
             System.err.println("Wrong username!");
             return;
         }
         System.out.println("Enter password!");
-        String password = sc.nextLine();
-        if(password.isEmpty() || !password.equals("6vasNzQ3569z")){
+        String pword = sc.nextLine();
+        if(pword.isEmpty() || !pword.equals(password)){
             System.err.println("Wrong password!");
             return;
         }
