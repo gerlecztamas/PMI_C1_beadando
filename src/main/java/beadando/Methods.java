@@ -202,19 +202,66 @@ public class Methods {
     }
 
     protected static void addToCart(ArrayList<Good> goods, ArrayList<Good> cart){
+        System.out.println("Enter name of product you'd like to add to your cart!");
+        String name = sc.nextLine();
+        for(Good good : goods){
+            if(good.getName().equals(name)){
+                cart.add(new Good(good.getName(),good.getPrice(),good.getId(),good.getCategory()));
+                System.out.println(ANSI_GREEN+"Product is successfully added to your cart!!"+ANSI_RESET);
+                return;
+            }
+        }
+        System.err.println("There is no product with this name!");
+
 
     }
 
     protected static void removeFromCart(ArrayList<Good> cart){
-
+        System.out.println("Enter name of product you'd like to add to your cart!");
+        String name = sc.nextLine();
+        for(Good good : cart){
+            if(good.getName().equals(name)){
+                cart.remove(good);
+                System.out.println(ANSI_GREEN+"Product is successfully added to your cart!!"+ANSI_RESET);
+                return;
+            }
+        }
+        System.err.println("There is no product with this name in your cart!");
     }
 
     protected static void listCart(ArrayList<Good> cart){
-
+        for(Good good : cart){
+            System.out.println(good.getName()+"-"+good.getPrice()+"-"+good.getId()+"-"+good.getCategory());
+        }
+        if(cart.isEmpty()){
+            System.out.println("Your cart is empty!");
+        }
     }
 
     protected static void pay(ArrayList<Good> cart){
+        int sum=0;
+        for(Good good : cart){
+            sum+=good.getPrice();
+        }
+        System.out.println("To pay: "+sum+" Ft");
+        while(true){
+            try {
+                System.out.println("To finish payment type 'done' !");
+                String done = sc.nextLine();
 
+
+                if(!done.equals("done")){
+                    throw new Exception();
+                }
+                cart.clear();
+                System.out.println(ANSI_GREEN+"Payment is successfully done!!"+ANSI_RESET);
+                break;
+            }
+            catch(Exception ex){
+                System.err.println("You have to type 'done' to finish payment!");
+            }
+
+        }
     }
 
 
