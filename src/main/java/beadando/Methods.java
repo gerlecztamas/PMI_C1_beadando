@@ -9,7 +9,7 @@ public class Methods {
     public static Scanner sc = new Scanner(System.in);
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_YELLOW = "\u001B[33m";
+
 
     protected static void listProducts(ArrayList<Good> goods){
         for(Good good : goods){
@@ -146,11 +146,11 @@ public class Methods {
                 bool = false;
             }
             catch(InputMismatchException ex){
-                System.err.println("The id has to consist of 9 digits!");
+                System.err.println("The id has to be a number and has to consist of 9 digits!");
                 sc.nextLine();
             }
             catch(WrongLength ex){
-                System.err.println("The id has to consist of 9 digits!");
+                System.err.println("The id has to be a number and has to consist of 9 digits!");
                 sc.nextLine();
             }
             catch(AlreadyTaken ex){
@@ -226,12 +226,12 @@ public class Methods {
             System.out.println("Your cart is empty!");
             return;
         }
-        System.out.println("Enter name of product you'd like to add to your cart!");
+        System.out.println("Enter name of product you'd like to remove from your cart!");
         String name = sc.nextLine();
         for(Good good : cart){
             if(good.getName().equals(name)){
                 cart.remove(good);
-                System.out.println(ANSI_GREEN+"Product is successfully added to your cart!"+ANSI_RESET);
+                System.out.println(ANSI_GREEN+"Product is successfully removed from your cart!"+ANSI_RESET);
                 return;
             }
         }
